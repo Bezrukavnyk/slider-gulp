@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('html/_head.htm',{
+	"title":"Главная"
+	})
+	<body>
+		<div class="wrapper">
+			<main class="page">
+
+<!-- =====================preloader============================== -->					
+				<div class="preloader">
+					<img src="img/Twinings_Assets/_loading.jpg" alt="">
+				</div>
+
+<!-- =====================Заглушка если экран горизонтален============================== -->				
+				<div class="landscape-ibg">
+					<img src="img/Twinings_Assets/not_available.png" alt="">
+				</div>
+<!-- =====================navigation============================== -->
+				<div class="navigation">
+					<div class="btn-prev-ibg">
+                         <img src="img/Twinings_Assets/left.png" alt="">
+					</div>
+					<div class="btn-next-ibg">
+                         <img src="img/Twinings_Assets/right.png" alt="">
+					</div>
+				</div>
+ 
+           <!-- Для достижения более точной анимации как в макапе, я разбил слайдер на 2 маленьких слайдера.
+		   Так как продукция прокручиваеться, а все остальные елементы на странице стоят неподвижно,
+		   я принял данное решение для более точной реализации анимации -->
+
+
+				<div class="slider--container">
+       <!-- ==============Link to google.com ============================== -->
+					<a href="https://www.google.com.ua/" target="_blank" class="link-more-ibg">
+                          <img src="img/Twinings_Assets/CTA.png" alt="">
+					</a>
+<!-- =====================Слайдер продукции============================== -->	
+                   <div class="slide-product">
+					   <div class="product-wrapper">
+						   <div class="product-slide">
+							<div class="slide__main--product-ibg">
+								<img class="main-img" src="img/Twinings_Assets/peppermint-product.png" alt="">
+							</div>
+						   </div>
+						   <div class="product-slide">
+							<div class="slide__main--product-ibg">
+								<img class="main-img" src="img/Twinings_Assets/raspberry-product.png" alt="">
+							</div>
+						   </div>
+						   <div class="product-slide">
+							<div class="slide__main--product-ibg">
+								<img class="main-img" src="img/Twinings_Assets/peach-product.png" alt="">
+							</div>
+						   </div>
+						   
+					   </div>
+				   </div>
+<!-- =====================Задний фон и все остальные части страницы============================== -->	
+					<div class="slide-ibg _peppermint">
+						<img src="img/Twinings_Assets/peppermint.jpg" alt="">
+                          <div class="slide-top-ibg">
+						    	<img src="img/Twinings_Assets/pepermint-tagline-back.png" alt="">
+							  <div class="slide-top__new-ibg">
+								  <img src="img/Twinings_Assets/peppermint-newBanner.png" alt="">
+							  </div>
+                              <div class="slide-top__article-ibg">
+								  <img src="img/Twinings_Assets/pepermin-tagline.png" alt="">
+							  </div>
+						  </div>
+                          <div class="slide-main _pepermint">
+							<div class="slide__main--product-ibg">
+			
+								<div class="slide__decoration _left-ibg">
+									<img src="img/Twinings_Assets/pepermint-elements/pepermint-1.png" alt="">
+								</div>
+								<div class="slide__decoration _right-ibg">
+									<img src="img/Twinings_Assets/pepermint-elements/strawberry-2.png" alt="">
+								</div>
+							</div>
+							  <div class="slide__decoration _one-ibg">
+								<img src="img/Twinings_Assets/pepermint-elements/pepermint-2.png" alt="">
+							</div>
+							<div class="slide__decoration _two-ibg">
+								<img src="img/Twinings_Assets/pepermint-elements/seed-1.png" alt="">
+							</div>
+							<div class="slide__decoration _three-ibg">
+								<img src="img/Twinings_Assets/pepermint-elements/seed-2.png" alt="">
+							</div>
+							<div class="slide__decoration _four-ibg">
+								<img src="img/Twinings_Assets/pepermint-elements/strawberry-1.png" alt="">
+							</div>
+						
+						  </div>
+
+					</div>
+					<div class="slide-ibg _raspberry">
+						<img src="img/Twinings_Assets/raspberry-BG.jpg" alt="">
+                          <div class="slide-top-ibg">
+						    	<img src="img/Twinings_Assets/raspberry-tagline.png" alt="">
+							  <div class="slide-top__new-ibg">
+								  <img src="img/Twinings_Assets/raspberry-new.png" alt="">
+							  </div>
+						  </div>
+                          <div class="slide-main">
+
+							<div class="slide__main--product-ibg">
+								<div class="slide__decoration _left-ibg">
+									<img src="img/Twinings_Assets/raspberr-elements/Lemon.png" alt="">
+								</div>
+								<div class="slide__decoration _left-top-ibg">
+									<img src="img/Twinings_Assets/raspberr-elements/petal-2.png" alt="">
+								</div>
+								<div class="slide__decoration _right-ibg">
+									<img src="img/Twinings_Assets/raspberr-elements/Raspberry3.png" alt="">
+								</div>
+								<div class="slide__decoration _right_bottom-ibg">
+									<img src="img/Twinings_Assets/raspberr-elements/Raspberry2.png" alt="">
+								</div>
+								<div class="slide__decoration _right_bottom-two-ibg">
+									<img src="img/Twinings_Assets/raspberr-elements/petal-5.png" alt="">
+								</div>
+							</div>
+
+
+							  <div class="slide__decoration _one-ibg">
+								<img src="img/Twinings_Assets/raspberr-elements/petal-5.png" alt="">
+							</div>
+							<div class="slide__decoration _three-ibg">
+								<img src="img/Twinings_Assets/raspberr-elements/petal-1.png" alt="">
+							</div>
+							<div class="slide__decoration _four-ibg">
+								<img src="img/Twinings_Assets/raspberr-elements/Raspberry1.png" alt="">
+							</div>
+						
+						  </div>
+
+					</div>
+					<div class="slide-ibg _peach">
+						<img src="img/Twinings_Assets/peach-BG.jpg" alt="">
+                          <div class="slide-top-ibg">
+						    	<img src="img/Twinings_Assets/peach-tagline.png" alt="">
+							  <div class="slide-top__new-ibg">
+								  <img src="img/Twinings_Assets/peppermint-newBanner.png" alt="">
+							  </div>
+						  </div>
+                          <div class="slide-main _pepermint">
+							<div class="slide__main--product-ibg">
+								<div class="slide__decoration _left-ibg">
+									<img src="img/Twinings_Assets/peach-elements/orange.png" alt="">
+								</div>
+								<div class="slide__decoration _right-ibg">
+									<img src="img/Twinings_Assets/peach-elements/peach.png" alt="">
+								</div>
+							</div>
+						
+
+					</div>
+				</div>
+			</main>
+		</div>
+
+		@@include('html/_js.htm',{})
+	</body>
+</html>

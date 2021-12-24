@@ -1,0 +1,457 @@
+@use "sass:math";
+
+// Подключение миксинов ===========================================================================================================================================================================================================================================================================
+@import "base/mixins";
+
+// Подключение шрифтов ===========================================================================================================================================================================================================================================================================
+//&display=swap - добавить при подключении через плагин
+// Подключить если есть локальные файлы шрифтов
+//@import "fonts/fonts";
+
+// Подключение иконочных шрифтов ==============================================================================================================================================================================================================================================================================
+// Подключить если есть файл иконочного шрифта
+//@import "fonts/icons";
+
+// Шрифт по умолчанию ==============================================================================================================================================================================================================================================================================
+$fontFamily: "";
+$fontSize: rem(14); // где 14(px) - размер шрифта по умолчанию из макета
+
+// Основные цвета
+$mainColor: #000; // Цвет шрифта по умолчанию
+
+// НАСТРОЙКИ ===============================================================================================================================================================================================================================================================================================
+// Минимальная ширина страницы
+$minWidth: 320;
+// Ширина полотна (макета)
+$maxWidth: 1920;
+// Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 1170;
+// Общий отступ у контейнера
+// (30 = по 15px слева и справа, 0 = нет отступа)
+$containerPadding: 30;
+
+// Тип адаптива:
+// 1 = отзывчивость (у контейнера нет брейкпоинтов),
+// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
+$responsiveType: 1;
+
+// Ширина страбатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поинты
+$pc: em(
+  $containerWidth
+); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: em(767.98); // Телефоны L
+$mobileSmall: em(479.98); // Телефоны S
+
+// Обнуление и общие параметры ============================================================================================================================================================================================== =============================================================================================== ===============================================================================================
+@import "base/null";
+
+body {
+    width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  .lock & {
+    overflow: hidden;
+    touch-action: none;
+  }
+}
+// Оболочка ============================================================================================================================================================================================================================================================================================================================================================================================================================================
+.wrapper {
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .slide__decoration{
+	transform: scale(0);
+	transition: 0.5s linear;	
+}
+
+  > main {
+    flex: 1 1 auto;
+  }
+}
+.preloader{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top:0;
+	left: 0;
+	z-index: 12;
+	& img{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: fill;
+	}
+}
+.loaded {
+	& .preloader{
+		transition: 0.5s linear;
+		opacity: 0;
+		z-index: -1;
+		pointer-events: none;
+	}
+	& .slide__decoration{
+		transform: scale(1);
+		transition: 0.5s linear;
+		}	
+	  &	.slide-ibg._active .slide__decoration{
+			transform: scale(1);
+			opacity: 1;
+			transition: transform 0.5s linear;
+			& img{
+				object-fit: contain;
+			}
+		}
+
+	& .main-img{
+		transition: 0.5s linear 0.5s;
+		transform: translateX(0%);
+	}
+	& .slide-top-ibg {
+		transform: translateY(0%);
+		transition: 0.5s linear 0.5s;
+	  }
+	  & .slide-top__article-ibg{
+		transform: scale(1);
+		transition: 0.5s linear 1s;
+	}
+	& .slide-top__new-ibg{
+		transform: translateY(0%);
+		transition: 0.5s linear 1.5s;
+	}
+	& .btn-prev-ibg,
+    & .btn-next-ibg{
+	transform: scale(1);
+	transition: 0.5s linear 1.5s;
+}
+.link-more-ibg{
+	transform: scale(1);
+	transition: 0.5s linear 1.5s;
+    }
+  }
+
+@import "base";
+
+
+@import "common";
+
+
+@import "home";
+.slide-ibg {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+  width: 100%;
+}
+.slide-top-ibg {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  transform: translateY(-100%);
+  transition: 0.5s linear 0.5s;
+}
+.slider--container{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	overflow: hidden;
+}
+.slide-top__new-ibg{
+	position: absolute;
+	left: 7vw;
+	height: 50px;
+	width: 80px;
+	top: 0;
+	transform: translateY(-100%);
+    transition: 0.5s linear 1.5s;
+}
+.slide-top-ibg img{
+	object-fit: contain;
+	object-position: top left;
+}
+.slide-top__article-ibg{
+	position: absolute;
+	left: 12vw;
+    height: 20vh;
+    width: 70%;
+    top: 17vh;
+	transform: scale(0);
+    transition: 0.5s linear 1s;
+}
+.slide-main{
+	width: 100%;
+	height: 60vh;
+	position: relative;
+}
+.main--product{
+	position: relative;
+}
+.main-img{
+	transition: 0.5s linear 0.5s;
+	transform: translateX(150%);
+}
+.slide__main--product-ibg{
+	transition: 0.5s linear 0.5s;
+	position: absolute;
+	left: 50%;
+	transform: translateX(calc(-50% + 10px));
+    height: 60vw;
+    width: 60vw;
+    top: 10vh;
+	z-index: 2;
+}
+.main-img{
+	z-index: 2;
+}
+.slide__decoration._left-ibg{
+	position: absolute;
+    left: -32%;
+    height: 100%;
+    width: 80%;
+    top: 36%;
+    z-index: 1;
+}
+.slide__decoration._right-ibg{
+	position: absolute;
+    left: 61%;
+    height: 87%;
+    width: 66%;
+    top: -21%;
+    z-index: 1;
+
+}
+.slide__decoration._one-ibg{
+	position: absolute;
+    right: -15%;
+    height: 35%;
+    width: 40%;
+    top: 80%;
+    z-index: 1;
+	
+}
+.slide__decoration._four-ibg{
+	position: absolute;
+    left: -21%;
+    height: 35%;
+    width: 45%;
+    top: 5%;
+    z-index: 1;
+	
+}
+.slide__decoration._two-ibg{
+	position: absolute;
+    right: 10%;
+    height: 50px;
+    width: 50px;
+    top: 70%;
+    z-index: 1;
+}
+.slide__decoration._three-ibg{
+	position: absolute;
+    right: -30px;
+    height: 60px;
+    width: 60px;
+    top: calc(50% - 45px);
+    z-index: 1;
+
+}
+
+.btn-prev-ibg,
+.btn-next-ibg{
+	cursor: pointer;
+	position: absolute;
+	width: 10vw;
+	height: 68px;
+	z-index: 10;
+	top: 62%;
+	transform: scale(0);
+	transition: 0.5s linear 1.5s;
+	& img{
+		object-fit: contain;
+		object-position: center;
+	}
+}
+.btn-prev-ibg{
+left: 30px;
+}
+.btn-next-ibg{
+right: 30px;
+}
+.slide-ibg{
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0%;
+	transition: 0.5s linear;
+	z-index: 1;
+    opacity: 0;
+	&._active{
+		z-index: 2;
+		opacity: 1;
+		top: 0;
+		left: 0;
+		transition: 0.5s linear;
+		position: relative;	
+	}
+}
+
+.slide-ibg._peach{
+	& .slide__decoration._left-ibg{
+	position: absolute;
+    left: -32%;
+    height: 70%;
+    width: 70%;
+    top: 53%;
+    z-index: 1;
+	}
+	& .slide__decoration._right-ibg{
+		position: absolute;
+		right: -19%;
+		height: 69%;
+		width: 72%;
+		top: -23%;
+		z-index: 1;
+		left: auto;
+		}
+}
+.link-more-ibg{
+	position: absolute;
+	width: 40%;
+	height: 30px;
+	bottom: 5vh;
+	left: 30%;
+	z-index: 3;
+	transform: scale(0);
+	transition: 0.5s linear 1.5s;
+	& img{
+		object-fit: contain;
+		object-position: center;
+	}
+}
+.slide-ibg .slide__decoration{
+	 transform: scale(0);
+	 opacity: 0;
+	 transition: 0s linear;
+}
+
+@media screen and (orientation: portrait) {
+
+	.landscape-ibg{
+		transition: 0.5s linear;
+		opacity: 0;
+		z-index: -1;
+		pointer-events: none;
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+	}
+  }
+@media screen and (orientation: landscape) {
+	.landscape-ibg{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top:0;
+		left: 0;
+		z-index: 11;
+		background-color: #fff;
+		& img{
+			object-fit: contain;
+			object-position: center;
+		}
+	}
+}
+._raspberry .slide__decoration._left-ibg {
+    left: -34%;
+    height: 100%;
+    width: 80%;
+    top: 46%;
+}
+._raspberry .slide__decoration._left-top-ibg {
+	left: -19%;
+    height: 35%;
+    width: 35%;
+    top: -6%;
+}
+._raspberry  .slide__decoration._three-ibg{
+	left: -10%;
+    height: 25%;
+    width: 25%;
+    top: 24%;
+    z-index: 1;
+}
+._raspberry .slide__decoration._four-ibg {
+	left: -15%;
+    height: 45%;
+    width: 45%;
+    top: -15%;
+    z-index: 1;
+}
+
+._raspberry .slide__decoration._right-ibg {
+    left: 60%;
+    height: 71%;
+    width: 67%;
+    top: 4%;
+}
+._raspberry .slide__decoration._right_bottom-ibg {
+    left: 52%;
+    height: 66%;
+    width: 49%;
+    top: -55%; 
+}
+
+._raspberry .slide__decoration._right_bottom-two-ibg {
+	left: 72%;
+    height: 49%;
+    width: 49%;
+    top: -25%;
+}
+
+
+
+
+._raspberry .slide__decoration._one-ibg {
+    position: absolute;
+    right: -15%;
+    height: 35%;
+    width: 40%;
+    top: -5%;
+    z-index: 1;
+}
+
+.slide-product{
+	position: fixed;
+	width: 100%;
+	height: 60vh;
+	bottom: 0;
+	left: 0;
+	z-index: 3;
+	display: flex;
+}
+.product-wrapper{
+	position: relative;
+	height: 100%;
+	display: flex;
+	transition: .5s linear;
+}
+.product-slide{
+	height: 100%;
+	width: 100%;
+	min-width: 100%;
+	display: flex;
+	flex: 1 1 auto;
+	position: relative;
+}
